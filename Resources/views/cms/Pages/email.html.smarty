@@ -1,0 +1,794 @@
+{*
+    INFO:
+    =============================================================================
+    Name:           Pages/email.html.smarty
+    Author:         Can Berkol
+    Version:        1.0.0
+    Date:           02.01.2014
+
+    Description:    This template creates a complete emailing page.
+
+
+    PARAMETERS:
+    =============================================================================
+    $email                              array       Main information container.
+        .css                            array       Holds CSS styling information
+            .article                    array
+                .h1                     array
+                    .color              string
+                    .display            string
+                    .font               array
+                        .family         string      font-family:
+                        .size           string      font-size:
+                        .weight         string      font-weight:
+                    .line-height    string      line-height:
+                    .margin         array
+                        .bottom     string      margin-bottom:
+                    .text           array
+                        .align      mixed       text-align:
+                .h2                     array
+                    .color              string
+                    .display            string
+                        .font           array
+                            .family     string      font-family:
+                            .size       string      font-size:
+                            .weight     string      font-weight:
+                        .line-height    string      line-height:
+                        .margin         array
+                            .bottom     string      margin-bottom:
+                        .text           array
+                            .align      mixed       text-align:
+                .h3                     array
+                    .color              string
+                    .display            string
+                        .font           array
+                            .family     string      font-family:
+                            .size       string      font-size:
+                            .weight     string      font-weight:
+                        .line-height    string      line-height:
+                        .margin         array
+                            .bottom     string      margin-bottom:
+                        .text           array
+                            .align      mixed       text-align:
+                .h4                     array
+                    .color              string
+                    .display            string
+                        .font           array
+                            .family     string      font-family:
+                            .size       string      font-size:
+                            .weight     string      font-weight:
+                        .line-height    string      line-height:
+                        .margin         array
+                            .bottom     string      margin-bottom:
+                        .text           array
+                            .align      mixed       text-align:
+            .bgtable                    array       backgrounTable class
+                .height                 mixed       height element
+                .margin                 array       margin element
+                    .all                string      margin:
+                .padding                array       padding element
+                    .all                string      padding:
+                .width                  mixed       width element
+            .body                       array       body class/element
+                .bg                     array
+                 .color                 mixed       bg-color:
+            .bodycontent                array
+                .a                      array
+                    .color              string      color:
+                    .font               array
+                        .weight         string      font-weight:
+                    .text               array
+                        .decoration     string      text-decoration:
+                .color                  string      color:
+                .font                   array
+                    .family             string      font-family:
+                    .size               string      font-size:
+                .img                    array
+                    .display            string      display:
+                    .margin             array
+                        .bottom         string      margin-bottom:
+                .line                   array
+                    .height             string      line-height:
+                .text                   array
+                    .align              string      text-align:
+            .container                  array       templateContainer class
+                .bg                     array
+                    .color              string      background-color
+                .border                 array       Border element
+                    .all                string      border:
+            .footercontent              array
+                .a                      array
+                    .color              string      color:
+                    .font               array
+                        .weight         string      font-weight
+                    .text               array
+                        .decoration     string      text-decoration
+                .color                  string      color:
+                .font                   array
+                    .family             string      font-family:
+                    .size               string      font-size:
+                .img                    array
+                    .display            string      display:
+                .line                   array
+                    .height             string      line-height:
+                .text                   array
+                    .align              string      text-align:
+            .headercontent              array
+                .a                      array
+                    .color              string      color:
+                    .font               array
+                        .weight         string      font-weight:
+                    .text               array
+                        .decoration     string      text-decoration:
+                .border                 array
+                    .bottom             string      border-bottom
+                .color                  string      color:
+                .h2                     array
+                    .text               array
+                        .align          string      text-align:
+                .font                   array
+                    .family             string      font-family:
+                    .size               string      font-size:
+                    .weight             string      font-weight:
+                .line                   array
+                    .height             string      line-height
+                .padding                array
+                    .all                string      padding:
+                .text                   array
+                    .align              string      text-align:
+                .vertical               array
+                    .align              string      vertical-align:
+            .headerimage                array
+                .height                 string      height:
+                .max                    array
+                    .width              string      max-width:
+            .img                        array       img css class
+                .font                   array       font element
+                    .height             mixed       font height
+                    .size               mixed       font size.
+                    .weight             mixed       font weight
+                .line                   array       line element
+                    .height             mixed       line height
+                .outline                string      outline element
+                .text                   array       text element
+                    .decoration         string      text decoration
+                    .transform          string      text transform
+            .preheader                  array       preHeader class
+                .bg                     array
+                    .color              string      background-color:
+                .border                 array
+                    .bottom             string      border-bottom:
+                .div                    array
+                    .a                  array
+                        .color          string      color:
+                        .font           array
+                            .weight     string      font-weight:
+                        .text           array
+                            .decoration string      text-decoration:
+                    .color              string
+                    .font               array
+                        .family         string      font-family:
+                        .size           string      font-size:
+                    .img                array
+                        .height         string      height:
+                        .max            array
+                            .width      string      max-width:
+                    .line               array
+                        .height         string      line-height:
+                    .text               array
+                        .align          string      text-align:
+            .social                     array
+                .a                      array
+                    .border             array
+                        .all            string      border:
+                    .display            string      display:
+                    .float              string      float:
+                    .margin             array
+                        .right          string      margin-right:
+                .bg                     array
+                    .color              string      background-color:
+                .div                    array
+                    .text               array
+                        .align          string      text-align:
+            .templateheader             array
+                .bg                     array
+                    .color              string      background-color:
+                .border                 array
+                    .bottom             string      border-bottom:
+            .templatefooter             array
+                .bg                     array
+                    .color              string      background-color
+                .border                 array
+                    .top                string      border-top:
+            .utility                    array
+                .bg                     array
+                    .color              string      background-color:
+                .border                 array
+                    .top                string      border-top:
+                .div                    array
+                    .text               array
+                        .align          string      text-align
+        .contact                        array       Sender contact information
+            .info                       array
+                .type                   string      Contact type.
+                .value                  string      Contact information.
+        .content                        string      Content as html or plain text.
+        .copyright                      string      Copyright notice.
+        .header                         string      Optional header - sub-title.
+        .link                           array       Links
+            .browser                    string      Link to show email on browser.
+            .theme                      string      Current theme's link
+            .unsubscribe                string      Link to unsubscribe.
+            .update                     string      Link to update subscription.
+        .owner                          array
+            .logo                       string      Owner logo file.
+            .name                       string      Owner name
+        .phrase                         array
+            .browser                    string
+            .unsubscribe                string
+            .update                     string
+            .view_on                    string
+            .view_on_browser            string
+        .separator                      array
+            .img                        string      url to separator image
+            .height                     string      separator height
+            .width                      string      separator width
+        .settings                       array
+            .copyright                  bool        Enable/disable copyright notice.
+            .info                       bool        Enable/disable information about sender.
+            .link                       bool        Enable/disable show on browser link.
+            .social                     bool        Enable/disable social network list.
+            .unsubscribe                bool        Show unsubscribe links.
+        .social                         array
+            .network                    BiberLtd\Core\SocialNetworkManagementBundle\Entity\SocialNetwork
+        .subject                        string      Email subject.
+
+*}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<!-- This is a simple example template that you can edit to create your own custom templates -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Facebook sharing information tags -->
+<meta property="og:title" content="{$email.subject}">
+<title>{$email.subject}</title>
+<style type="text/css">
+#outlook a {
+    padding: 0;
+}
+body {
+    width: 100% !important;
+}
+body {
+    -webkit-text-size-adjust: none;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+img {
+    border: none;
+    font-size: {$email.css.img.font.size}
+        font-weight: {$email.css.img.font.weight};
+    height: {$email.css.img.font.height};
+    line-height: {$email.css.img.line.height};
+    outline: {$email.css.img.outline};
+    text-decoration: {$email.css.img.text.decoration};
+    text-transform: {$email.css.img.text.transform};
+}
+#backgroundTable {
+    height: {$email.css.bgtable.height} !important;
+    margin: {$email.css.bgtable.margin.all};
+    padding: {$email.css.bgtable.padding.all};
+    width: {$email.css.bgtable.width} !important;
+}
+/*
+@tab Page
+@section background color
+@tip Set the background color for your email. You may want to choose one that matches your company's branding.
+@theme page
+*/
+body, .backgroundTable {
+    /*@editable*/
+    background-color: {$email.css.body.bg.color};
+}
+/*
+@tab Page
+@section email border
+@tip Set the border for your email.
+*/
+#templateContainer {
+    /*@editable*/
+    border: {$email.css.container.border.all};
+}
+/*
+@tab Page
+@section heading 1
+@tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+@theme heading1
+*/
+h1, .h1 {
+    /*@editable*/
+    color: {$email.css.article.h1.color};
+    display: {$email.css.article.h1.display};
+    /*@editable*/
+    font-family: {$email.css.article.h1.font.family};
+    /*@editable*/
+    font-size: {$email.css.article.h1.font.size};
+    /*@editable*/
+    font-weight: {$email.css.article.h1.font.weight};
+    /*@editable*/
+    line-height: {$email.css.article.h1.line.height};
+    margin-bottom: {$email.css.article.h1.margin.bottom};
+    /*@editable*/
+    text-align: {$email.css.article.h1.text.align};
+}
+/*
+@tab Page
+@section heading 2
+@tip Set the styling for all second-level headings in your emails.
+@theme heading2
+*/
+h2, .h2 {
+    /*@editable*/
+    color: {$email.css.article.h2.color};
+    display: {$email.css.article.h2.display};
+    /*@editable*/
+    font-family: {$email.css.article.h2.font.family};
+    /*@editable*/
+    font-size: {$email.css.article.h2.font.size};
+    /*@editable*/
+    font-weight: {$email.css.article.h2.font.weight};
+    /*@editable*/
+    line-height: {$email.css.article.h2.line.height};
+    margin-bottom: {$email.css.article.margin.bottom};
+    /*@editable*/
+    text-align: {$email.css.article.text.align};
+}
+/*
+@tab Page
+@section heading 3
+@tip Set the styling for all third-level headings in your emails.
+@theme heading3
+*/
+h3, .h3 {
+    /*@editable*/
+    color: {$email.css.article.h3.color};
+    display: {$email.css.article.h3.display};
+    /*@editable*/
+    font-family: {$email.css.article.h3.font.family};
+    /*@editable*/
+    font-size: {$email.css.article.h3.font.size};
+    /*@editable*/
+    font-weight: {$email.css.article.h3.font.weight};
+    /*@editable*/
+    line-height: {$email.css.article.h3.line.height};
+    margin-bottom: {$email.css.article.h3.margin.bottom};
+    /*@editable*/
+    text-align: {$email.css.article.text.align};
+}
+/*
+@tab Page
+@section heading 4
+@tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
+@theme heading4
+*/
+h4, .h4 {
+    /*@editable*/
+    color: {$email.css.article.h4.color};
+    display: {$email.css.article.h4.display};
+    /*@editable*/
+    font-family: {$email.css.article.h4.font.family};
+    /*@editable*/
+    font-size: {$email.css.article.h4.font.size};
+    /*@editable*/
+    font-weight: {$email.css.article.h4.font.weight};
+    /*@editable*/
+    line-height: {$email.css.article.h4.line.height};
+    margin-bottom: {$email.css.article.h4.margin.bottom};
+    /*@editable*/
+    text-align: {$email.css.article.h4.text.align};
+}
+/*
+@tab Header
+@section preheader style
+@tip Set the background color for your email's preheader area.
+@theme page
+*/
+#templatePreheader {
+    /*@tab Header
+@section preheader style
+@tip Set the background color for your email's preheader area.
+@theme page*/
+    background-color: {$email.css.preheader.bg.color};
+    border-bottom: {$email.css.preheader.border.bottom};
+}
+/*
+@tab Header
+@section preheader text
+@tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
+*/
+.preheaderContent div {
+    /*@editable*/
+    color: {$email.css.preheader.div.color};
+    /*@editable*/
+    font-family: {$email.css.preheader.div.font.family};
+    /*@editable*/
+    font-size: {$email.css.preheader.div.font.size};
+    /*@editable*/
+    line-height: {$email.css.preheader.div.line.height};
+    /*@editable*/
+    text-align: {$email.css.preheader.div.text.align};
+}
+/*
+@tab Header
+@section preheader link
+@tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
+*/
+.preheaderContent div a:link, .preheaderContent div a:visited {
+    /*@editable*/
+    color: {$email.css.preheader.a.color};
+    /*@editable*/
+    font-weight: {$email.css.preheader.a.font.weight};
+    /*@editable*/
+    text-decoration: {$email.css.preheader.a.text.decoration};
+}
+.preheaderContent div img {
+    height: {$email.css.preheader.img.height};
+    max-width: {$email.css.preheader.img.max.width};
+}
+/*
+@tab Header
+@section header style
+@tip Set the background color and border for your email's header area.
+@theme header
+*/
+#templateHeader {
+    /*@editable*/
+    background-color: {$email.css.templateheader.bg.color};
+    /*@editable*/
+    border-bottom: {$email.css.templateheader.border.bottom};
+}
+/*
+@tab Header
+@section header text
+@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+*/
+.headerContent {
+    /*@tab Header
+@section header text
+@tip Set the styling for your email's header text. Choose a size and color that is easy to read.*/
+    border-bottom: {$email.css.headercontent.border.bottom};
+    /*@editable*/
+    color: {$email.css.headercontent.color};
+    /*@editable*/
+    font-family: {$email.css.headercontent.font.family};
+    /*@editable*/
+    font-size: {$email.css.headercontent.font.size};
+    /*@editable*/
+    font-weight: {$email.css.headercontent.font.weight};;
+    /*@editable*/
+    line-height: {$email.css.headercontent.line.height};
+    /*@editable*/
+    padding: {$email.css.headercontent.padding.all};
+    text-align: {$email.css.headercontent.text.align};
+    vertical-align: {$email.css.headercontent.vertical.align};
+}
+/*
+@tab Header
+@section header link
+@tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
+*/
+.headerContent a:link, .headerContent a:visited {
+    /*@editable*/
+    color: {$email.css.headercontent.a.color};
+    /*@editable*/
+    font-weight: {$email.css.headercontent.a.font.weight};
+    /*@editable*/
+    text-decoration: {$email.css.headercontent.a.text.decoration};
+}
+.headerContent h2 {
+    text-align: {$email.css.headercontent.h2.text.align};
+}
+#headerImage {
+    height: {$email.css.headerimage.height};
+    max-width: {$email.css.headerimage.max.width} !important;
+}
+/*
+@tab Body
+@section body style
+@tip Set the background color for your email's body area.
+*/
+#templateContainer, .bodyContent {
+    /*@editable*/
+    background-color: {$email.css.container.bg.color};
+}
+/*
+@tab Body
+@section body text
+@tip Set the styling for your email's main content text. Choose a size and color that is easy to read.
+@theme main
+*/
+.bodyContent div {
+    /*@editable*/
+    color: {$email.css.bodycontent.color};
+    /*@editable*/
+    font-family: {$email.css.bodycontent.font.family};
+    /*@editable*/
+    font-size: {$email.css.bodycontent.font.size};
+    /*@editable*/
+    line-height: {$email.css.bodycontent.line.height};
+    /*@editable*/
+    text-align: {$email.css.bodycontent.text.align};
+}
+/*
+@tab Body
+@section body link
+@tip Set the styling for your email's main content links. Choose a color that helps them stand out from your text.
+*/
+.bodyContent div a:link, .bodyContent div a:visited {
+    /*@editable*/
+    color: {$email.css.bodycontent.a.color};
+    /*@editable*/
+    font-weight: {$email.css.bodycontent.a.font.weight};
+    /*@editable*/
+    text-decoration: {$email.css.bodycontent.a.text.decoration};
+}
+.bodyContent img {
+    display: {$email.css.bodycontent.img.display};
+    margin-bottom: {$email.css.bodycontent.img.margin.bottom};
+}
+/*
+@tab Footer
+@section footer style
+@tip Set the background color and top border for your email's footer area.
+@theme footer
+*/
+#templateFooter {
+    /*@editable*/
+    background-color: {$email.css.templatefooter.bg.color};
+    border-top: {$email.css.templatefooter.border.top};
+}
+/*
+@tab Footer
+@section footer text
+@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+@theme footer
+*/
+.footerContent div {
+    /*@editable*/
+    color: {$email.css.footercontent.color};
+    /*@editable*/
+    font-family: {$email.css.footercontent.font.family};
+    /*@editable*/
+    font-size: {$email.css.footercontent.font.size};
+    /*@editable*/
+    line-height: {$email.css.footercontent.line.height};
+    /*@editable*/
+    text-align: {$email.css.footercontent.text.align};
+}
+/*
+@tab Footer
+@section footer link
+@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+*/
+.footerContent div a:link, .footerContent div a:visited {
+    /*@editable*/
+    color: {$email.css.footercontent.a.color};
+    /*@editable*/
+    font-weight: {$email.css.footercontent.a.font.weight};
+    /*@editable*/
+    text-decoration: {$email.css.footercontent.a.text.decoration};
+}
+.footerContent img {
+    display: {$email.css.footercontent.img.display};
+}
+/*
+@tab Footer
+@section social bar style
+@tip Set the background color and border for your email's footer social bar.
+*/
+#social {
+    /*@editable*/
+    background-color: {$email.css.social.bg.color};
+}
+#social a {
+    border: {$email.css.social.a.border.all};
+    display: {$email.css.social.a.display};
+    float: {$email.css.social.float};
+    margin-right: {$email.css.social.margin.right};
+}
+/*
+@tab Footer
+@section social bar style
+@tip Set the background color and border for your email's footer social bar.
+*/
+#social div {
+    /*@editable*/
+    text-align: {$email.css.social.div.text.align};
+}
+/*
+@tab Footer
+@section utility bar style
+@tip Set the background color and border for your email's footer utility bar.
+*/
+#utility {
+    /*@editable*/
+    background-color: {$email.css.utility.bg.color};
+    /*@editable*/
+    border-top: {$email.css.utility.border.top};
+}
+
+/*
+@tab Footer
+@section utility bar style
+@tip Set the background color and border for your email's footer utility bar.
+*/
+#utility div {
+    /*@editable*/
+    text-align: {$email.css.utility.div.text.align};
+}
+
+#monkeyRewards img {
+    max-width: 160px;
+}
+</style>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+<center>
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable">
+        <tr>
+            <td align="center" valign="top">
+                <!-- // Begin Template Preheader \\ -->
+                <table border="0" cellpadding="2" cellspacing="0" width="100%" id="templatePreheader">
+                    <tr>
+                        <td align="center" valign="top" class="preheaderContent">
+
+                            <!-- // Begin Module: Standard Preheader \\ -->
+                            <table border="0" cellpadding="5" cellspacing="0" width="600px">
+                                <tr>
+                                    <td valign="top">
+                                        <div>
+                                            {$email.subject}
+                                        </div>
+                                    </td>
+                                    {if $email.settings.link}
+                                    <td valign="top" width="200">
+                                        <div>
+                                            {$email.phrase.view_on}
+                                            <br>
+                                            <a href="{$email.link.browser}" target="_blank">{$email.phrase.browser}</a>.
+                                        </div>
+                                    </td>
+                                    {/if}
+                                </tr>
+                            </table>
+                            <!-- // End Module: Standard Preheader \\ -->
+
+                        </td>
+                    </tr>
+                </table>
+                <!-- // End Template Preheader \\ -->
+                <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
+                    <tr>
+                        <td align="center" valign="top">
+                            <!-- // Begin Template Header \\ -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+                                <tr>
+                                    <td class="headerContent">
+
+                                        <table border="0" cellpadding="5" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td align="center">
+                                                    <img src="{$email.owner.logo}"  width="120" height="120" alt="{$email.owner.name}" title="" align="center">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <img src="{$email.separator.img}" width="{$email.separator.width}" height="{$email.separator.height}" alt="" title="" align="center">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        <h2>{$email.header}</h2>
+                                                        <h2></h2>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- // End Template Header \\ -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <!-- // Begin Template Body \\ -->
+                            <table border="0" cellpadding="10" cellspacing="0" width="600" id="templateBody">
+                                <tr>
+                                    <td valign="top" class="bodyContent">
+                                        <!-- // Begin Module: Standard Content \\ -->
+                                        <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td valign="top">
+                                                    <div>
+                                                        {$email.content}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- // End Module: Standard Content \\ -->
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- // End Template Body \\ -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <!-- // Begin Template Footer \\ -->
+                            <table border="0" cellpadding="10" cellspacing="0" width="600" id="templateFooter">
+                                <tr>
+                                    <td valign="top" class="footerContent">
+                                        <!-- // Begin Module: Standard Footer \\ -->
+                                        <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td valign="top" width="370">
+                                                    <div>
+                                                        {if $email.settings.copyright}
+                                                        <em>{$email.copyright}</em>
+                                                        <br>
+                                                        {/if}
+                                                        {if $email.settings.info}
+                                                        <br>
+                                                        <strong>{$email.phrase.our_contact_info}</strong>
+                                                        <br>
+                                                        {foreach $email.contact.info as $info}
+                                                            {$info.type} {$info.value}
+                                                            <br>
+                                                        {/foreach}
+                                                        {/if}
+                                                    </div>
+                                                    <br>
+                                                </td>
+                                                {if $email.settings.social}
+                                                <td align="right" valign="top" width="111" id="social">
+                                                    <div>
+                                                        {foreach $email.social as $network}
+                                                        <a class="{$network->getUrlKey()}" href="{$network->getUrl()}">
+                                                            <img align="left" alt="{$network->getName()}" height="32" src="{$email.link.theme}img/footer-{$network->getUrlKey()}.png" title="" width="32">
+                                                        </a>
+                                                        {/foreach}
+                                                    </div>
+                                                </td>
+                                                {/if}
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" valign="middle" id="utility">
+                                                    {if $email.settings.unsubscribe}
+                                                    <div>
+                                                        &nbsp;<a href="{$email.link.unsubscribe}">{$email.phrase.unsubscribe}</a> | <a href="{$email.link.update}">{$email.phrase.update}</a> | <a href="{$email.link.browser}">{$email.phrase.view_on_browser}</a>
+                                                        &nbsp;
+                                                    </div>
+                                                    {/if}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- // End Module: Standard Footer \\ -->
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- // End Template Footer \\ -->
+                        </td>
+                    </tr>
+                </table>
+                <br>
+            </td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>

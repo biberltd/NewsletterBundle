@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<skipper version="3.0.0.1104" mvc="Symfony2" orm="Doctrine2">
+  <module name="NewsletterBundle" import-format="Doctrine2Php" import-path="../Entity" uuid="f92c3fee-5ec5-448e-bc2a-7ded8bc67ec9">
+    <entity name="Newsletter" description="Holds newsletter definitions." uuid="975f1ec2-9881-466b-a73a-2d87e2c31b7f">
+      <field name="id" description="System given id." type="integer" size="10" unique="true" primary="true" auto-increment="true" uuid="21b54318-571c-4ef2-959d-6d8e6b7a3b03"/>
+      <field name="date_created" description="Date when the newsletter is created." type="datetime" required="true" uuid="3a12b04c-7655-4fdd-a2d2-71f72e27d1d6"/>
+      <field name="date_saved" description="Date when the newsletter is last saved." type="datetime" required="true" uuid="7fa22ec4-d401-4c2e-acfc-78f4ae6dee3d"/>
+      <field name="date_sent" description="Date when the newsletter is / will be send." type="datetime" uuid="63a8a431-255f-4f67-bc90-3bb320ce52f5"/>
+      <field name="code" description="System given code." type="string" size="45" required="true" unique="true" uuid="a2c5416e-23a6-4e26-b330-231109b0a176"/>
+      <field name="category" description="Newsletter category." type="integer" size="10" uuid="84162717-ad0c-4b69-a30a-e03431f1485d"/>
+      <field name="site" description="Site that newsletters belong to." type="integer" size="10" uuid="96e129a9-8d84-4795-a1a7-4656464c16ed"/>
+      <index name="idx_u_newsletter_id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <index name="idx_u_newsletter_code" unique="true">
+        <index-field name="code"/>
+      </index>
+      <index name="idx_n_newsletter_date_created">
+        <index-field name="date_created"/>
+      </index>
+      <index name="idx_n_newsletter_date_saved">
+        <index-field name="date_saved"/>
+      </index>
+      <index name="idx_n_newsletter_date_sent">
+        <index-field name="date_sent"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="engine">innodb</attribute>
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+        </attribute>
+        <attribute name="table">newsletter</attribute>
+        <attribute name="export-file-name">Newsletter.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="Newsletter" to="NewsletterCategory" caption="idx_f_newsletter_category" owner-alias="newsletters" inverse-alias="newsletter_category" uuid="a0f4befc-ee7b-4b8d-b4ca-cdb3c72dafd8">
+      <association-field from="category" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">RESTRICT</attribute>
+      </orm-attributes>
+    </association>
+    <association from="Newsletter" to="Site" caption="idx_f_newsletter_site" inverse-alias="site" uuid="5e4ab945-fc32-4d7d-903c-6f5050423247">
+      <association-field from="site" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <entity name="NewsletterCategory" description="Holds newsletter category definitions." uuid="630affed-683c-494f-ad06-07497868202c">
+      <field name="id" description="System given id." type="integer" size="10" required="true" unique="true" primary="true" auto-increment="true" uuid="c4771d8b-483a-47cf-b7b8-82794ef5c7ca"/>
+      <field name="date_created" description="Date when the category is created." type="datetime" required="true" uuid="824f593e-6f93-4c2a-8e64-831b6f8b4814"/>
+      <field name="count_members" description="Number of members associated with this group." type="integer" size="10" default="0" required="true" uuid="eeea0977-0a32-49df-b7e4-782ad8edf993"/>
+      <field name="count_messages" description="Number of messages sent under this category." type="integer" size="10" default="0" required="true" uuid="5418b077-f6f0-48d4-b839-72fb4090e132"/>
+      <field name="is_internal" description="Sent only to members? y:yes;n:no" type="string" size="1" default="y" required="true" uuid="4ac42953-17b2-4528-9767-cbc0b75a695f"/>
+      <field name="site" description="Site that newsletter categories belong to." type="integer" size="10" uuid="d8b6b3dc-1e57-4178-9ca4-886ee56a81a8"/>
+      <index name="idx_u_newsletter_category_id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <index name="idx_n_newsletter_category_date_created">
+        <index-field name="date_created"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+          <attribute name="engine">innodb</attribute>
+        </attribute>
+        <attribute name="table">newsletter_category</attribute>
+        <attribute name="export-file-name">NewsletterCategory.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="NewsletterCategory" to="Site" caption="idx_f_newsletter_category_site" inverse-alias="site" uuid="5463ea70-323e-4459-af43-35f00f271159">
+      <association-field from="site" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <entity name="NewsletterLocalization" description="Holds localized values of newsletter entries." uuid="65ac8459-a815-4a4f-ab5f-6953910608bb">
+      <field name="newsletter" description="Localized newsletter." type="integer" size="10" required="true" primary="true" uuid="82fdbb2c-1dc8-4232-8965-219570750260"/>
+      <field name="language" description="Localization language." type="integer" size="5" required="true" primary="true" uuid="e8ee1072-e9de-4770-87ee-6dccaa019a0c"/>
+      <field name="subject" description="Newsletter subject." type="string" size="45" required="true" uuid="4ea14f93-9502-48fc-bb65-1f3090e0de74"/>
+      <field name="content" description="Newsletter content, may contain HTML." type="text" required="true" uuid="1cd87f99-a81e-451f-b7fc-0e83c1875eb2"/>
+      <index name="idx_u_newsletter_localization">
+        <index-field name="newsletter"/>
+        <index-field name="language"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+          <attribute name="engine">innodb</attribute>
+        </attribute>
+        <attribute name="table">newsletter_localization</attribute>
+        <attribute name="export-file-name">NewsletterLocalization.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="NewsletterLocalization" to="Newsletter" caption="idx_f_newsletter_localization_newsletter" owner-alias="localizations" inverse-alias="newsletter" uuid="6e3ae820-0543-48b4-b663-b63216135cf5">
+      <association-field from="newsletter" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <association from="NewsletterLocalization" to="Language" caption="idx_f_newsletter_localization_language" inverse-alias="language" uuid="0a452a57-fd1d-450c-b70b-2427d64c84ce">
+      <association-field from="language" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <entity name="NewsletterCategoryLocalization" description="Holds localized values of newsletter category entries." uuid="49e1b535-a0c1-4358-ab7d-6c37f5f24016">
+      <field name="category" description="Localized newsletter category." type="integer" size="10" required="true" primary="true" uuid="0d9fe84d-deb7-440a-b0bc-7610b8399b7c"/>
+      <field name="language" description="Localization language." type="integer" size="5" required="true" primary="true" uuid="a5f5aae3-678e-4f83-8b63-aa80b1de6f4e"/>
+      <field name="name" description="Localized name of newsletter category." type="string" size="45" required="true" uuid="0fe6de70-0c4a-4566-80bf-df90028bb943"/>
+      <field name="description" description="Localized description of newsletter category." type="string" size="255" uuid="9fd5ef84-9b94-4b0f-8f5c-d7a552fefb0f"/>
+      <index name="idx_u_newsletter_category_localization" unique="true">
+        <index-field name="category"/>
+        <index-field name="language"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+          <attribute name="engine">innodb</attribute>
+        </attribute>
+        <attribute name="table">newsletter_category_localization</attribute>
+        <attribute name="export-file-name">NewsletterCategoryLocalization.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="NewsletterCategoryLocalization" to="NewsletterCategory" caption="idx_f_newsletter_category_localization_category" owner-alias="localizations" inverse-alias="newsletter_category" uuid="309dbc58-9a0f-411f-ab2e-aab808959102">
+      <association-field from="category" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <association from="NewsletterCategoryLocalization" to="Language" caption="idx_f_newsletter_category_localization_language" inverse-alias="language" uuid="0672f59f-75a4-463b-930f-5024c90814f4">
+      <association-field from="language" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <entity name="NewsletterRecipient" description="Stores definition of newsletter recipients." uuid="cd4074bf-befd-404d-99dc-b2e60421b9a6">
+      <field name="id" description="System given id." type="integer" size="10" required="true" unique="true" primary="true" auto-increment="true" uuid="a06f6fae-297f-4f58-8d99-16e07f681576"/>
+      <field name="recipient" description="If registered member, the member id." type="integer" size="10" uuid="b231d49f-bef0-4404-8b4b-9b855f65346f"/>
+      <field name="email" description="Recipient e-mail address." type="string" size="155" required="true" uuid="04777237-8df2-42f0-b872-7134122d02e6"/>
+      <field name="date_added" description="Date when the recipient is added." type="datetime" required="true" uuid="5a1296dc-6704-46a1-aebd-963b8bd5db13"/>
+      <field name="status" description="i:inactive,a:active" type="string" size="1" default="a" required="true" uuid="d0d08824-5a04-4897-b626-9c9ba5c5c5c2"/>
+      <field name="date_modified" description="Date when the recipient definition is last updated." type="datetime" required="true" uuid="7906b1b0-604c-4efa-820d-a309e58dce49"/>
+      <field name="key_activation" description="Activation key." type="string" size="32" uuid="c1c80756-3f96-4009-86c0-411632bc7de6"/>
+      <field name="newsletter" type="integer" size="10" required="true" uuid="fb9919b7-3ec3-4333-9c69-28c6966e48e8"/>
+      <index name="idx_u_newsletter_recipient_id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <index name="idx_u_newsletter_recipient_email" unique="true">
+        <index-field name="email"/>
+      </index>
+      <index name="idx_n_newsletter_recipient_date_added">
+        <index-field name="date_added"/>
+      </index>
+      <index name="idx_n_newsletter_recipient_date_modified">
+        <index-field name="date_modified"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+          <attribute name="engine">innodb</attribute>
+        </attribute>
+        <attribute name="table">newsletter_recipient</attribute>
+        <attribute name="export-file-name">NewsletterRecipient.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="NewsletterRecipient" to="Member" caption="idx_f_newsletter_recipient_member" inverse-alias="member" uuid="9ea02f15-6ba6-47ea-94dd-ef45f916bf64">
+      <association-field from="recipient" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <association from="NewsletterRecipient" to="Newsletter" caption="idx_f_newsletter_id" owner-alias="receipients" inverse-alias="newsletter" uuid="12a039ed-484a-40b4-bed9-5c1dc53d3540">
+      <association-field from="newsletter" to="id"/>
+    </association>
+    <comment caption="NewsletterBundle Pricing" description="newsletter: 190 TL&#10;newsletter_localization: 130 TL&#10;newsletter_category: 165 TL&#10;newsletter_category_localization: 130 TL&#10;newsletter_recipient: 230 TL&#10;&#10;toplam: 845 TL" uuid="eac27c47-8711-43f0-b390-bb63036101f3"/>
+    <orm-attributes>
+      <attribute name="namespace">BiberLtd\Core\Bundles\NewsletterBundle\Entity</attribute>
+      <attribute name="filename-format">entity-name-only</attribute>
+      <attribute name="file-suffix">without-suffix</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <entity uuid="49e1b535-a0c1-4358-ab7d-6c37f5f24016" bg-color="4294967295" hdr-color="4292006610" position-x="550" position-y="300" size-x="0" size-x2="156" size-y="0" size-y2="73"/>
+    <entity uuid="630affed-683c-494f-ad06-07497868202c" bg-color="4294967295" hdr-color="4292006610" position-x="450" position-y="100" size-x="0" size-x2="149" size-y="0" size-y2="101"/>
+    <entity uuid="65ac8459-a815-4a4f-ab5f-6953910608bb" bg-color="4294967295" hdr-color="4292006610" position-x="150" position-y="300" size-x="0" size-x2="120" size-y="0" size-y2="73"/>
+    <entity uuid="975f1ec2-9881-466b-a73a-2d87e2c31b7f" bg-color="4294967295" hdr-color="4292006610" position-x="200" position-y="100" size-x="0" size-x2="124" size-y="0" size-y2="115"/>
+    <entity uuid="cd4074bf-befd-404d-99dc-b2e60421b9a6" bg-color="4294967295" hdr-color="4292006610" position-x="750" position-y="150" size-x="0" size-x2="135" size-y="0" size-y2="129"/>
+    <comment uuid="eac27c47-8711-43f0-b390-bb63036101f3" bg-color="4294948765" position-x="0" position-y="68" size-x="0" size-x2="168" size-y="0" size-y2="116" txt-color="4278190080"/>
+    <module uuid="f92c3fee-5ec5-448e-bc2a-7ded8bc67ec9" bg-color="4292925619" size-x="0" size-x2="900" size-y="-50" size-y2="450"/>
+  </visual-data>
+</skipper>
