@@ -18,7 +18,7 @@
  *
  */
 
-namespace BiberLtd\Core\Bundles\MemberManagementBundle\Controller;
+namespace BiberLtd\Bundle\MemberManagementBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +40,7 @@ class RenderController
      * @version         1.0.0
      * @author          Can Berkol
      *
-     * @see             BiberLtd\Core\Bundles\NewsletterBundle\Resources\views\cms\Pages\email.html.smarty
+     * @see             BiberLtd\Bundle\NewsletterBundle\Resources\views\cms\Pages\email.html.smarty
      *
      * @param           string          $subject
      * @param           string          $content
@@ -412,7 +412,7 @@ class RenderController
             ),
         );
 
-        return $this->templating->render('BiberLtdCoreBundlesNewsletterBundle:'.$core['theme'].'/Pages:email.html.smarty', $vars);
+        return $this->templating->render('BiberLtdBundleNewsletterBundle:'.$core['theme'].'/Pages:email.html.smarty', $vars);
     }
 }
 /**

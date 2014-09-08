@@ -1,12 +1,12 @@
 #accountLogin:
 #    pattern:  manage/account/login
-#    defaults: { _controller: BiberLtdCoreBundlesMemberManagementBundle:Account:login}
+#    defaults: { _controller: BiberLtdBundleMemberManagementBundle:Account:login}
 #processLogin:
 #    pattern:  process/login/{redirect}
-#    defaults: { _controller: BiberLtdCoreBundlesMemberManagementBundle:Process:login, redirect: "dashboard" }
+#    defaults: { _controller: BiberLtdBundleMemberManagementBundle:Process:login, redirect: "dashboard" }
 #processLogout:
 #    pattern:  process/logout/{backto}
-#    defaults: { _controller: BiberLtdCoreBundlesMemberManagementBundle:Process:logout, backto: "account-login" }
+#    defaults: { _controller: BiberLtdBundleMemberManagementBundle:Process:logout, backto: "account-login" }
 #processRemind:
 #    pattern:  process/remind/{backto}
-#    defaults: { _controller: BiberLtdCoreBundlesMemberManagementBundle:Process:remind, backto: "account-login" }
+#    defaults: { _controller: BiberLtdBundleMemberManagementBundle:Process:remind, backto: "account-login" }

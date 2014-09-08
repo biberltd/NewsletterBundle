@@ -13,7 +13,7 @@
  * @description Model / Entity class.
  *
  */
-namespace BiberLtd\Core\Bundles\NewsletterBundle\Entity;
+namespace BiberLtd\Bundle\NewsletterBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
 use BiberLtd\Core\CoreLocalizableEntity;
 
@@ -57,7 +57,7 @@ class NewsletterCategory extends CoreLocalizableEntity
 
     /**
      * @ORM\OneToMany(
-     *     targetEntity="BiberLtd\Core\Bundles\NewsletterBundle\Entity\Newsletter",
+     *     targetEntity="BiberLtd\Bundle\NewsletterBundle\Entity\Newsletter",
      *     mappedBy="newsletter_category"
      * )
      */
@@ -65,14 +65,14 @@ class NewsletterCategory extends CoreLocalizableEntity
 
     /**
      * @ORM\OneToMany(
-     *     targetEntity="BiberLtd\Core\Bundles\NewsletterBundle\Entity\NewsletterCategoryLocalization",
+     *     targetEntity="BiberLtd\Bundle\NewsletterBundle\Entity\NewsletterCategoryLocalization",
      *     mappedBy="newsletter_category"
      * )
      */
     protected $localizations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BiberLtd\Core\Bundles\SiteManagementBundle\Entity\Site")
+     * @ORM\ManyToOne(targetEntity="BiberLtd\Bundle\SiteManagementBundle\Entity\Site")
      * @ORM\JoinColumn(name="site", referencedColumnName="id", onDelete="CASCADE")
      */
     private $site;

@@ -1,7 +1,7 @@
 <?php
 /**
  * @name        NewsletterRecipient
- * @package		BiberLtd\Core\Bundles\NewsletterBundle
+ * @package		BiberLtd\Bundle\NewsletterBundle
  *
  * @author      Can Berkol
  * @author		Murat Ünal
@@ -14,7 +14,7 @@
  * @description Model / Entity class.
  *
  */
-namespace BiberLtd\Core\Bundles\NewsletterBundle\Entity;
+namespace BiberLtd\Bundle\NewsletterBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
 use BiberLtd\Core\CoreEntity;
 
@@ -68,14 +68,14 @@ class NewsletterRecipient extends CoreEntity
     private $key_activation;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="BiberLtd\Core\Bundles\MemberManagementBundle\Entity\Member")
+     * @ORM\ManyToOne(targetEntity="BiberLtd\Bundle\MemberManagementBundle\Entity\Member")
      * @ORM\JoinColumn(name="recipient", referencedColumnName="id", onDelete="CASCADE")
      */
     private $member;
 
     /** 
      * @ORM\ManyToOne(
-     *     targetEntity="BiberLtd\Core\Bundles\NewsletterBundle\Entity\Newsletter",
+     *     targetEntity="BiberLtd\Bundle\NewsletterBundle\Entity\Newsletter",
      *     inversedBy="receipients"
      * )
      * @ORM\JoinColumn(name="newsletter", referencedColumnName="id", nullable=false)

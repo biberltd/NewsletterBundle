@@ -179,7 +179,7 @@
     </association>
     <comment caption="NewsletterBundle Pricing" description="newsletter: 190 TL&#10;newsletter_localization: 130 TL&#10;newsletter_category: 165 TL&#10;newsletter_category_localization: 130 TL&#10;newsletter_recipient: 230 TL&#10;&#10;toplam: 845 TL" uuid="eac27c47-8711-43f0-b390-bb63036101f3"/>
     <orm-attributes>
-      <attribute name="namespace">BiberLtd\Core\Bundles\NewsletterBundle\Entity</attribute>
+      <attribute name="namespace">BiberLtd\Bundle\NewsletterBundle\Entity</attribute>
       <attribute name="filename-format">entity-name-only</attribute>
       <attribute name="file-suffix">without-suffix</attribute>
     </orm-attributes>

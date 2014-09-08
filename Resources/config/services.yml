@@ -1,7 +1,7 @@
 services:
     newsletter.model:
-            class:        BiberLtd\Core\Bundles\NewsletterBundle\Services\NewsletterModel
+            class:        BiberLtd\Bundle\NewsletterBundle\Services\NewsletterModel
             arguments:    [@kernel, "default", "doctrine"]
     newsletterrender.model:
-            class:        BiberLtd\Core\Bundles\NewsletterBundle\Controller\RenderController
+            class:        BiberLtd\Bundle\NewsletterBundle\Controller\RenderController
             arguments:    [@templating]
