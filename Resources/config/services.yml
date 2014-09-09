@@ -1,0 +1,7 @@
+parameters:
+#    biber_ltd_newsletter.example.class: BiberLtd\Bundle\NewsletterBundle\Example
+
+services:
+#    biber_ltd_newsletter.example:
+#        class: %biber_ltd_newsletter.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
