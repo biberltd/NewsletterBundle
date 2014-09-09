@@ -1,7 +1,7 @@
-parameters:
-#    biber_ltd_newsletter.example.class: BiberLtd\Bundle\NewsletterBundle\Example
-
 services:
-#    biber_ltd_newsletter.example:
-#        class: %biber_ltd_newsletter.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    newsletter.model:
+            class:        BiberLtd\Bundle\NewsletterBundle\Services\NewsletterModel
+            arguments:    [@kernel, "default", "doctrine"]
+    newsletterrender.model:
+            class:        BiberLtd\Bundle\NewsletterBundle\Controller\RenderController
+            arguments:    [@templating]
