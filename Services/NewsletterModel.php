@@ -58,19 +58,19 @@
  *
  */
 
-namespace BiberLtd\Core\Bundles\NewsletterModel\Services;
+namespace BiberLtd\Bundle\NewsletterModel\Services;
 
 /** CoreModel */
-use BiberLtd\Core\CoreModel;
+use BiberLtd\Bundle\CoreBundle\CoreModel;
 /** Entities to be used */
-use BiberLtd\Core\Bundles\MemberManagementBundle\Entity as BundleEntity;
-use BiberLtd\Core\Bundles\MultiLanguageSupportBundle\Entity as MLSEntity;
+use BiberLtd\Bundle\MemberManagementBundle\Entity as BundleEntity;
+use BiberLtd\Bundle\MultiLanguageSupportBundle\Entity as MLSEntity;
 /** Helper Models */
-use BiberLtd\Core\Bundles\SiteManagementBundle\Services as SMMService;
-use BiberLtd\Core\Bundles\MultiLanguageSupportBundle\Services as MLSService;
+use BiberLtd\Bundle\SiteManagementBundle\Services as SMMService;
+use BiberLtd\Bundle\MultiLanguageSupportBundle\Services as MLSService;
 /** Core Service */
-use BiberLtd\Core\Services as CoreServices;
-use BiberLtd\Core\Exceptions as CoreExceptions;
+use BiberLtd\Bundle\CoreBundle\Services as CoreServices;
+use BiberLtd\Bundle\CoreBundle\Exceptions as CoreExceptions;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class NewsletterModel extends CoreModel {
@@ -1910,7 +1910,7 @@ class NewsletterModel extends CoreModel {
         } elseif ($by == 'post') {
 
             foreach ($collection as $item) {
-                $entity = new \BiberLtd\Core\Bundles\NewsletterBundle\Entity\NewsletterRecipient();
+                $entity = new \BiberLtd\Bundle\NewsletterBundle\Entity\NewsletterRecipient();
                 foreach ($item['address'] as $column => $value) {
                     $itemMethod = 'set_' . $column;
                     if (method_exists($entity, $itemMethod)) {

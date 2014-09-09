@@ -1,7 +1,7 @@
 <?php
 /**
  * @name        Newsletter
- * @package		BiberLtd\Core\Bundles\NewsletterBundle
+ * @package		BiberLtd\Bundle\NewsletterBundle
  *
  * @author      Can Berkol
  * @author		Murat Ünal
@@ -14,9 +14,9 @@
  * @description Model / Entity class.
  *
  */
-namespace BiberLtd\Core\Bundles\NewsletterBundle\Entity;
+namespace BiberLtd\Bundle\NewsletterBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
-use BiberLtd\Core\CoreLocalizableEntity;
+use BiberLtd\Bundle\CoreBundle\CoreLocalizableEntity;
 
 /** 
  * @ORM\Entity
@@ -65,7 +65,7 @@ class Newsletter extends CoreLocalizableEntity
 
     /** 
      * @ORM\OneToMany(
-     *     targetEntity="BiberLtd\Core\Bundles\NewsletterBundle\Entity\NewsletterLocalization",
+     *     targetEntity="BiberLtd\Bundle\NewsletterBundle\Entity\NewsletterLocalization",
      *     mappedBy="newsletter"
      * )
      */
@@ -73,7 +73,7 @@ class Newsletter extends CoreLocalizableEntity
 
     /** 
      * @ORM\OneToMany(
-     *     targetEntity="BiberLtd\Core\Bundles\NewsletterBundle\Entity\NewsletterRecipient",
+     *     targetEntity="BiberLtd\Bundle\NewsletterBundle\Entity\NewsletterRecipient",
      *     mappedBy="newsletter"
      * )
      */
@@ -81,7 +81,7 @@ class Newsletter extends CoreLocalizableEntity
 
     /** 
      * @ORM\ManyToOne(
-     *     targetEntity="BiberLtd\Core\Bundles\NewsletterBundle\Entity\NewsletterCategory",
+     *     targetEntity="BiberLtd\Bundle\NewsletterBundle\Entity\NewsletterCategory",
      *     inversedBy="newsletters"
      * )
      * @ORM\JoinColumn(name="category", referencedColumnName="id", onDelete="RESTRICT")
@@ -89,7 +89,7 @@ class Newsletter extends CoreLocalizableEntity
     private $newsletter_category;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="BiberLtd\Core\Bundles\SiteManagementBundle\Entity\Site")
+     * @ORM\ManyToOne(targetEntity="BiberLtd\Bundle\SiteManagementBundle\Entity\Site")
      * @ORM\JoinColumn(name="site", referencedColumnName="id", onDelete="CASCADE")
      */
     private $site;
